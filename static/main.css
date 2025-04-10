@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+    font-family: "Roboto Mono", sans-serif;
+    overflow: hidden;
+    margin-top: 19px;
+    background: #8f8f8f;
+}
+
+:root {
+    --primary: #3F3F3F;
+    --secondary: #D9D9D9;
+    --shadow: rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+}
+
+@keyframes onMount {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    opacity: 0;
+    background: var(--primary);
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+    min-height: 40rem;
+    border-radius: 30px;
+    animation: onMount 0.4s ease-in-out forwards;
+}
+
+.titleBar {
+    min-height: 5.313rem;
+    border-radius: 12px;
+    background: var(--secondary);
+    box-shadow: var(--shadow) 0 1rem 25px;
+    padding: 0.1rem;
+    text-align: center;
+    user-select: none;
+}
+
+.titleBar > p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.titleBar > h1 {
+    margin: 0.45rem 0 0 0;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.pred-btn {
+    font-family: "Roboto Mono", sans-serif;
+}
+
+.flex-cont {
+    display: flex;
+    padding: 54px 54px;
+    height: 27.675rem;
+}
+
+#left {
+    width: 21.313rem;
+    margin-right: 4.063rem;
+    user-select: none;
+}
+
+#right {
+    width: 41.875rem;
+    background: var(--secondary);
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 20px;
+    overflow: scroll;
+    scrollbar-width: none;
+    box-shadow: var(--shadow) 0 0.625rem 15px;
+}
+
+.pred-btn {
+    width: 100%;
+    height: 4.688rem;
+    background: var(--primary);
+    border: 10px var(--secondary) solid;
+    border-radius: 20px;
+    color: var(--secondary);
+    font-size: 24px;
+    box-shadow: var(--shadow) 0 0.625rem 15px;
+    transition: background 0.1s ease-in-out, color 0.1s ease-in-out, font-size 0.1s ease-in-out, border-radius 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.pred-btn:hover {
+    background: var(--secondary);
+    color: #000;
+    font-size: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow) 0 0.225rem 35px;
+}
+
+#current-cont {
+    margin-top: 2.063rem;
+    height: 18.233rem;
+    width: 88.2%;
+    border-radius: 15px;
+    background: var(--secondary);
+    padding: 1.25rem;
+    text-align: center;
+    font-size: 22px;
+    box-shadow: var(--shadow) 0 0.625rem 15px;
+}
+
+#circuit-img {
+    margin-top: 0.533rem;
+    width: 100%;
+    height: 12.5rem;
+    background: var(--primary);
+    border-radius: 15px;
+}
+
+#circuit-name {
+    margin-top: 0.833rem;
+    width: 100%;
+    height: 2.5rem;
+    background: var(--primary);
+    border-radius: 15px;
+    font-size: 20px;
+    text-align: center;
+    color: var(--secondary);
+    padding-top: 8px;
+}
+
+#posTable {
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.row-animate-in {
+    opacity: 0;
+    animation: fadeInDown 0.3s ease-in-out forwards;
+}
+
+.circuit-Img {
+    width: 100%;
+    margin-top: 5%;
+    filter: drop-shadow(0 5px 2px var(--shadow));
+}
