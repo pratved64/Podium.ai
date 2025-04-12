@@ -17,7 +17,7 @@
     "name": "Suzuka",
     "lat": 34.8431,
     "lon": 136.5419,
-    "completed": false,
+    "completed": true,
     "index": 1256
   },
   "bahrain": {

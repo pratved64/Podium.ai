@@ -79,8 +79,8 @@ body {
     width: 41.875rem;
     background: var(--secondary);
     border-radius: 15px;
-    padding: 20px;
-    font-size: 20px;
+    padding: 18px;
+    font-size: 22px;
     overflow: scroll;
     scrollbar-width: none;
     box-shadow: var(--shadow) 0 0.625rem 15px;

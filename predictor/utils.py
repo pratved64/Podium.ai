@@ -11,7 +11,7 @@ def sumBool(arr):
 
 def ConvertTimeDelta(time: str) -> float:
     time = str(time)
-    if time == 'N/A' or time == 'nan' or time == 'DNS':
+    if time == 'N/A' or time == 'nan' or time == 'DNS' or time == 'DNF':
         return 1000
 
     val = 0
