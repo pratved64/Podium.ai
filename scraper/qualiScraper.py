@@ -9,6 +9,13 @@ load_dotenv()
 weatherKey = os.getenv("WEATHER_API_KEY")
 base_dir = os.path.dirname(os.path.abspath(__file__))
 circuitsPath = os.path.join(base_dir, "circuits2025.json")
+metadataPath = os.path.join(base_dir, "metadata.json")
+
+with open(circuitsPath, 'r') as file:
+    gpData = json.load(file)
+
+with open(metadataPath, 'r') as file:
+    lastUpdated = json.load(file)['lastUpdate']
 
 teamMap = {
     'McLaren': 'McLaren',
@@ -23,6 +30,40 @@ teamMap = {
     'Alpine Renault': 'Alpine',
     'Kick Sauber Ferrari': 'Kick Sauber',
 }
+
+f1_calendar = [
+    {"round": 1, "date": "2025-03-16", "gp": "australia"},
+    {"round": 2, "date": "2025-03-23", "gp": "china"},
+    {"round": 3, "date": "2025-04-06", "gp": "japan"},
+    {"round": 4, "date": "2025-04-13", "gp": "bahrain"},
+    {"round": 5, "date": "2025-04-20", "gp": "saudi-arabia"},
+    {"round": 6, "date": "2025-05-04", "gp": "miami"},
+    {"round": 7, "date": "2025-05-18", "gp": "imola"},
+    {"round": 8, "date": "2025-05-25", "gp": "monaco"},
+    {"round": 9, "date": "2025-06-01", "gp": "spain"},
+    {"round": 10, "date": "2025-06-15", "gp": "canada"},
+    {"round": 11, "date": "2025-06-29", "gp": "austria"},
+    {"round": 12, "date": "2025-07-06", "gp": "great-britain"},
+    {"round": 13, "date": "2025-07-27", "gp": "belgium"},
+    {"round": 14, "date": "2025-08-03", "gp": "hungary"},
+    {"round": 15, "date": "2025-08-31", "gp": "netherlands"},
+    {"round": 16, "date": "2025-09-07", "gp": "italy"},
+    {"round": 17, "date": "2025-09-21", "gp": "azerbaijan"},
+    {"round": 18, "date": "2025-10-05", "gp": "singapore"},
+    {"round": 19, "date": "2025-10-19", "gp": "usa"},
+    {"round": 20, "date": "2025-10-26", "gp": "mexico"},
+    {"round": 21, "date": "2025-11-09", "gp": "brazil"},
+    {"round": 22, "date": "2025-11-22", "gp": "las-vegas"},
+    {"round": 23, "date": "2025-11-30", "gp": "qatar"},
+    {"round": 24, "date": "2025-12-07", "gp": "abu-dhabi"},
+]
+
+
+def updateGP(circuitKey, comp):
+    gpData[circuitKey]['completed'] = comp
+    with open(circuitsPath, 'w') as gpFile:
+        json.dump(gpData, gpFile)
+
 
 
 def loadCircuits(path=circuitsPath) -> dict:

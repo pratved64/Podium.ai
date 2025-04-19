@@ -24,7 +24,7 @@
     "name": "Sakhir",
     "lat": 26.0325,
     "lon": 50.5106,
-    "completed": true,
+    "completed": false,
     "index": 1257
   },
   "saudi-arabia": {
@@ -125,4 +125,46 @@
     "completed": false,
     "index": 1271
   },
-  "u
+  "usa": {
+    "name": "Austin",
+    "lat": 30.1328,
+    "lon": -97.6411,
+    "completed": false,
+    "index": 1272
+  },
+  "mexico": {
+    "name": "Mexico City",
+    "lat": 19.4042,
+    "lon": -99.0907,
+    "completed": false,
+    "index": 1273
+  },
+  "brazil": {
+    "name": "Sao Paulo",
+    "lat": -23.7036,
+    "lon": -46.6997,
+    "completed": false,
+    "index": 1274
+  },
+  "las-vegas": {
+    "name": "Las Vegas",
+    "lat": 36.17,
+    "lon": -115.14,
+    "completed": false,
+    "index": 1275
+  },
+  "qatar": {
+    "name": "Lusail",
+    "lat": 25.4889,
+    "lon": 51.4544,
+    "completed": false,
+    "index": 1276
+  },
+  "abu-dhabi": {
+    "name": "Yas Marina",
+    "lat": 24.4672,
+    "lon": 54.6031,
+    "completed": false,
+    "index": 1277
+  }
+}

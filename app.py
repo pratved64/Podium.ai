@@ -1,16 +1,28 @@
 from flask import Flask, jsonify, request, render_template
-from scraper.qualiScraper import getResults
+from scraper.qualiScraper import getResults, f1_calendar, updateGP, lastUpdated
 from predictor.predict import predictPositions
 import pandas as pd
 import numpy as np
 import requests
 from predictor.utils import ConvertTimeDelta
+from datetime import datetime
 
 app = Flask(__name__)
 
 
 @app.route("/api/qualifying_data", methods=['GET'])
 def fetchQualifyingData():
+    today = datetime.today().date()
+    lastDate = datetime.strptime(lastUpdated, "%Y-%m-%d").date()
+    if today != lastDate:
+        for gp in f1_calendar:
+            gpDate = datetime.strptime(gp["date"], "%Y-%m-%d").date()
+            if gpDate < today:
+                updateGP(gp['gp'], True)
+                print('Completed', gp['gp'])
+            else:
+                updateGP(gp['gp'], False)
+
     try:
         qualData = getResults()
         return jsonify({
