@@ -144,6 +144,10 @@ body {
     text-align: center;
 }
 
+td {
+    border: 1px solid gray;
+}
+
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -158,7 +162,7 @@ body {
 
 .row-animate-in {
     opacity: 0;
-    animation: fadeInDown 0.3s ease-in-out forwards;
+    animation: fadeInDown 0.5s cubic-bezier(0, 0, 0.3, 1) forwards;
 }
 
 .circuit-Img {

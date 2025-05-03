@@ -64,11 +64,3 @@ function fetchData() {
         })
         .catch(error => console.error(error));
 }
-
-
-
-/*
-TODO:
-1. Get Circuit dynamically, add functionality to automatically change current
-2. Add team colour for driver
- */

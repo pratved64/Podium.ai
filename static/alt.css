@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+@font-face {
+    font-family: "Ethnocentric";
+    src: url("Ethnocentric Rg.otf")
+}
+
+:root {
+    --black: #0C0C0C;
+    --white: #F1F1F1;
+    --border-white: rgba(255, 255, 255, 0.5);
+    --red: #ff2e2e;
+    --transparent: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: "Roboto Mono", sans-serif;
+    background: var(--black);
+    color: var(--white);
+    padding: 20px 30px;
+    overflow: hidden;
+}
+
+#titleHead {
+    all: unset;
+    font-size: 52px;
+    font-family: Ethnocentric, sans-serif;
+    user-select: none;
+}
+
+#titleSub {
+    all: unset;
+    display: block;
+    letter-spacing: 5px;
+    margin-left: 4.2rem;
+    user-select: none;
+}
+
+#left {
+    width: 62.5%;
+}
+
+#right {
+    width: 35%;
+    padding: 5px 20px;
+    margin-top: 3rem;
+    border: 1px solid #ffffff66;
+    border-radius: 12px;
+    height: 25.8rem;
+}
+
+#controls-bar {
+    margin: 40px 0;
+    max-width: 100%;
+    display: flex;
+    padding: 5px;
+}
+
+#controls-bar > button {
+    all: unset;
+    background: var(--red);
+    border: 1px solid var(--red);
+    color: var(--white);
+    font-size: 18px;
+    padding: 8px 0;
+    font-family: "Roboto Mono", sans-serif;
+    border-radius: 12px;
+    text-align: center;
+    width: 10rem;
+    transition: background 0.2s ease-in-out, border 0.2s ease-in-out, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#controls-bar > button:hover {
+    #background: var(--transparent);
+    #border: 1px solid white;
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #ff1301cc;
+    cursor: pointer;
+}
+
+#controls-bar > select {
+    margin-top: 0;
+    font-size: 18px;
+    font-family: "Roboto Mono", sans-serif;
+    padding: 8px 30px 8px 5px;
+    background: var(--transparent);
+    color: var(--white);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+#controls-bar > label {
+    margin-left: 25%;
+    padding: 8px 20px 8px 5px;
+}
+
+#model-select:hover, #model-select:focus {
+    border: 1px solid #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px #fff;
+}
+
+#pos-table-container {
+    height: 5vh;
+    max-height: 49vh;
+    overflow: scroll;
+    scrollbar-width: none;
+    border: 1px solid var(--border-white);
+    border-radius: 10px;
+    width: 85%;
+    transition: height 1s ease;
+}
+
+.posHead {
+    padding: 5px 0;
+}
+
+.posElement {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.posRow {
+    border: 1px solid var(--border-white);
+}
+
+.posHead, .posElement {
+    width: 14rem;
+}
+
+#circuit-name {
+    font-size: 30px;
+    margin-left: 1.2rem;
+}
+
+#circuit-name > p {
+    text-transform: uppercase;
+}
+
+#circuit-img {
+    background: #0f0f0f;
+    border: 1px solid #ffffff66;
+    border-radius: 12px;
+    padding: 10px;
+    width: 85%;
+    margin-left: 5%;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+
+#circuit-img a > img {
+    width: 100%;
+}
+
+#circuit-img:hover {
+    box-shadow: 0 0 10px #ffffff;
+    transform: scale(1.01);
+}
+
+#circuit-details {
+    padding: 5px 15px;
+    text-transform: uppercase;
+}
+
+#Layer_1 {
+    margin-left: 43%;
+    margin-top: 3%;
+    transition: transform 0.2s ease, filter 0.2s ease-out;
+}
+
+#Layer_1:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 6px #ffffff88);
+}
+
+.flex-cont {
+    display: flex;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #1c1c1c;
+    margin-top: 3.2rem;
+    height: 1.5rem;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInDown 1s ease forwards;
+    animation-delay: 1.1s;
+}
+
+footer > a {
+    text-decoration: none;
+    color: var(--red);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.row-animate-in {
+    opacity: 0;
+    animation: fadeInDown 0.3s ease-in-out forwards;
+}
+
+.animation-obj {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background: #1c1c1c;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateY(-10vh);
+    }
+
+    to {
+        transform: translateY(92vh);
+    }
+}

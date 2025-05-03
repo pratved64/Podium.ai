@@ -75,4 +75,8 @@ def home():
     return render_template("dashboard.html")
 
 
+@app.route("/alt")
+def alt():
+    return render_template("alt-dashboard.html")
+
 app.run(port=3000, debug=True)

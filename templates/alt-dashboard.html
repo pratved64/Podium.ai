@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Podium.ai</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='alt.css') }}">
+</head>
+<body id="main">
+<div class="animation-obj"></div>
+<h1 id="titleHead">Podium.ai</h1>
+<p id="titleSub">F1 Race Predictor</p>
+<div class="flex-cont ">
+    <div id="left">
+        <div id="controls-bar">
+            <button onclick="getData()">Predict</button>
+            <label for="model-select">Select Model</label>
+            <select name="models" id="model-select">
+                <option style="color: #0C0C0C">Model Alpha</option>
+            </select>
+        </div>
+        <div id="pos-table-container">
+            <table id="pos-table">
+                <thead>
+                <tr class="posRow">
+                    <th class="posHead">POS</th>
+                    <th class="posHead">DRIVER</th>
+                    <th class="posHead">TEAM</th>
+                </tr>
+                </thead>
+                <tbody id="pos-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="right">
+        <div id="circuit-name">
+            <p></p>
+        </div>
+        <div id="circuit-img">
+            <a href="https://www.formula1.com/en/racing/2025/saudi-arabia" target="_blank" id="circuit-link">
+                
+            </a>
+        </div>
+        <p id="circuit-details">UPCOMING GP</p>
+        <!--<svg fill="#eeeeee" height="50px" width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393 c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393 s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"></path> </g></svg>
+        -->
+
+    </div>
+</div>
+<footer id="sign-el">
+    A project by <a href="https://github.com/pratved64" target="_blank">Pratyush Ved</a>
+</footer>
+<script type="text/javascript" src="{{ url_for('static', filename='alt.js') }}"></script>
+</body>
+</html>
