@@ -4,24 +4,30 @@ from predictor.predict import predictPositions
 import pandas as pd
 import numpy as np
 import requests
+import os
 from predictor.utils import ConvertTimeDelta
 from datetime import datetime
 
 app = Flask(__name__)
 
+hostName = os.getenv("DOMAIN_NAME")
 
 @app.route("/api/qualifying_data", methods=['GET'])
 def fetchQualifyingData():
     today = datetime.today().date()
     lastDate = datetime.strptime(lastUpdated, "%Y-%m-%d").date()
     if today != lastDate:
-        for gp in f1_calendar:
-            gpDate = datetime.strptime(gp["date"], "%Y-%m-%d").date()
-            if gpDate < today:
-                updateGP(gp['gp'], True)
-                print('Completed', gp['gp'])
+        for i in range(len(f1_calendar)):
+            gpDate = datetime.strptime(f1_calendar[i]["date"], "%Y-%m-%d").date()
+            nextGPDate = datetime.strptime(f1_calendar[i + 1]["date"], "%Y-%m-%d").date()
+            if gpDate < today < nextGPDate:
+                print('Found interval!')
+                break
+            elif gpDate < today:
+                updateGP(f1_calendar[i]['gp'], True)
+                print("Completed GP:", f1_calendar[i]['gp'])
             else:
-                updateGP(gp['gp'], False)
+                updateGP(f1_calendar[i]['gp'], False)
 
     try:
         qualData = getResults()
@@ -51,10 +57,12 @@ def predict():
 
 @app.route("/api/predict", methods=['GET'])
 def getPredictions():
-    getLink = "http://127.0.0.1:3000/api/qualifying_data"
-    df = pd.DataFrame(requests.get(getLink).json()['data'],
+    getLink = hostName + "/api/qualifying_data"
+    print(getLink)
+    df = pd.DataFrame(requests.get(getLink, verify=False).json()['data'],
                       columns=["Season", "Round", "TrackType", "Circuit", "Weather", "Rainfall", "Driver", "Team",
                                "GridPosition", "Q1", "Q2", "Q3"])
+    #df = pd.DataFrame()
     dfEdited = df.copy()
     for index, row in df.iterrows():
         dfEdited.iloc[index, -3] = np.float64(ConvertTimeDelta(row['Q1']))
@@ -80,3 +88,4 @@ def alt():
     return render_template("alt-dashboard.html")
 
 
+app.run(debug=True)

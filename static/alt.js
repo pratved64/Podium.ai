@@ -6,7 +6,7 @@ const circuitToCountry = {
     "Suzuka": "Japan",
     "Sakhir": "Bahrain",
     "Jeddah": "Saudi_Arabia",
-    "Miami": "United_States",
+    "Miami": "Miami",
     "Imola": "Italy",
     "Monte Carlo": "Monaco",
     "Barcelona": "Spain",
@@ -56,6 +56,7 @@ const getData = () => {
             let imagePath = imgLink + circuitToCountry[data[0].Circuit] + "_Circuit";
 
             let imageElement = document.createElement('img');
+            console.log(imagePath)
             imageElement.src = imagePath;
             imageElement.alt = "Circuit";
             imageContainer.appendChild(imageElement);
