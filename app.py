@@ -59,7 +59,7 @@ def predict():
 def getPredictions():
     getLink = hostName + "/api/qualifying_data"
     print(getLink)
-    df = pd.DataFrame(requests.get(getLink, verify=False).json()['data'],
+    df = pd.DataFrame(requests.get(getLink).json()['data'],
                       columns=["Season", "Round", "TrackType", "Circuit", "Weather", "Rainfall", "Driver", "Team",
                                "GridPosition", "Q1", "Q2", "Q3"])
     #df = pd.DataFrame()
