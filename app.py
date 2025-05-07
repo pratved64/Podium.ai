@@ -59,7 +59,8 @@ def predict():
 def getPredictions():
     getLink = hostName + "/api/qualifying_data"
     print(getLink)
-    df = pd.DataFrame(requests.get(getLink, verify=False).json()['data'],
+    rq = requests.get(getLink)
+    df = pd.DataFrame(rq.json()['data'],
                       columns=["Season", "Round", "TrackType", "Circuit", "Weather", "Rainfall", "Driver", "Team",
                                "GridPosition", "Q1", "Q2", "Q3"])
     #df = pd.DataFrame()
@@ -88,4 +89,4 @@ def alt():
     return render_template("alt-dashboard.html")
 
 
-app.run(debug=True)
+
