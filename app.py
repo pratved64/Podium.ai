@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 hostName = os.getenv("DOMAIN_NAME")
 
-@app.route("/api/qualifying_data", methods=['GET'])
+
 def fetchQualifyingData():
     today = datetime.today().date()
     lastDate = datetime.strptime(lastUpdated, "%Y-%m-%d").date()
@@ -31,15 +31,15 @@ def fetchQualifyingData():
 
     try:
         qualData = getResults()
-        return jsonify({
+        return {
             'status': 'success',
             'data': qualData
-        })
+        }
     except Exception as e:
-        return jsonify({
+        return {
             'status': 'error',
             'message': str(e)
-        }), 500
+        }
 
 
 '''@app.route("/api/predict", methods=['POST'])
@@ -59,8 +59,8 @@ def predict():
 def getPredictions():
     getLink = hostName + "/api/qualifying_data"
     print(getLink)
-    rq = requests.get(getLink)
-    df = pd.DataFrame(rq.json()['data'],
+    rq = fetchQualifyingData()
+    df = pd.DataFrame(rq['data'],
                       columns=["Season", "Round", "TrackType", "Circuit", "Weather", "Rainfall", "Driver", "Team",
                                "GridPosition", "Q1", "Q2", "Q3"])
     #df = pd.DataFrame()
@@ -70,7 +70,9 @@ def getPredictions():
         dfEdited.iloc[index, -2] = np.float64(ConvertTimeDelta(row['Q2']))
         dfEdited.iloc[index, -1] = np.float64(ConvertTimeDelta(row['Q3']))
 
-    dfEdited[['Q1', 'Q2', 'Q3']] = dfEdited[['Q1', 'Q2', 'Q3']].astype(float)
+    for col in ['Q1', 'Q2', 'Q3']:
+        dfEdited[col] = df[col].apply(ConvertTimeDelta).astype(float)
+
     dfEdited['GridPosition'] = dfEdited['GridPosition'].astype(int)
 
     y = predictPositions(dfEdited)
@@ -89,4 +91,4 @@ def alt():
     return render_template("alt-dashboard.html")
 
 
-
+app.run(debug=True)
