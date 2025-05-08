@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Ethnocentric";
-    src: url("Ethnocentric Rg.otf")
+    src: url("Ethnocentric Rg.otf");
 }
 
 :root {
@@ -18,7 +18,8 @@ body {
     background: var(--black);
     color: var(--white);
     padding: 20px 30px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #titleHead {
@@ -36,12 +37,19 @@ body {
     user-select: none;
 }
 
+.flex-cont {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #left {
     width: 62.5%;
+    flex: 1 1 60%;
 }
 
 #right {
     width: 35%;
+    flex: 1 1 35%;
     padding: 5px 20px;
     margin-top: 3rem;
     border: 1px solid #ffffff66;
@@ -51,9 +59,11 @@ body {
 
 #controls-bar {
     margin: 40px 0;
-    max-width: 100%;
+    max-width: 85%; /* Match table width */
     display: flex;
     padding: 5px;
+    flex-wrap: nowrap; /* Prevent splitting label and select */
+    gap: 0.5rem;
 }
 
 #controls-bar > button {
@@ -71,15 +81,14 @@ body {
 }
 
 #controls-bar > button:hover {
-    #background: var(--transparent);
-    #border: 1px solid white;
+    background: var(--transparent);
+    border: 1px solid white;
     transform: scale(1.03);
     box-shadow: 0 0 15px #ff1301cc;
     cursor: pointer;
 }
 
 #controls-bar > select {
-    margin-top: 0;
     font-size: 18px;
     font-family: "Roboto Mono", sans-serif;
     padding: 8px 30px 8px 5px;
@@ -88,11 +97,13 @@ body {
     border-radius: 12px;
     cursor: pointer;
     transition: border 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap; /* Keep select text together */
 }
 
 #controls-bar > label {
-    margin-left: 25%;
+    margin-left: auto; /* Push label and select to end */
     padding: 8px 20px 8px 5px;
+    white-space: nowrap; /* Prevent wrap between label and select */
 }
 
 #model-select:hover, #model-select:focus {
@@ -148,7 +159,6 @@ body {
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-
 #circuit-img a > img {
     width: 100%;
 }
@@ -172,10 +182,6 @@ body {
 #Layer_1:hover {
     transform: scale(1.1);
     filter: drop-shadow(0 2px 6px #ffffff88);
-}
-
-.flex-cont {
-    display: flex;
 }
 
 footer {
@@ -203,7 +209,6 @@ footer > a {
         opacity: 0;
         transform: translateY(-2px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -230,8 +235,62 @@ footer > a {
     from {
         transform: translateY(-10vh);
     }
-
     to {
         transform: translateY(92vh);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    #left, #right {
+        width: 100%;
+        flex: 1 1 100%;
+        margin: 0.5rem 0;
+        height: auto;
+    }
+    #controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    #controls-bar > label {
+        margin-left: 0;
+    }
+    #pos-table-container {
+        width: 100%;
+        max-height: 40vh;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 5%;
+    }
+    #titleHead {
+        font-size: 8vw;
+    }
+    #titleSub {
+        font-size: 5vw;
+        margin-left: 0;
+    }
+    #circuit-name {
+        font-size: 6vw;
+        margin-left: 0;
+    }
+    #circuit-img {
+        width: 100%;
+        margin-left: 0;
+        padding: 5px;
+    }
+    #circuit-details {
+        font-size: 4vw;
+        padding: 5px;
+    }
+    footer {
+        font-size: 3vw;
+    }
+    #right {
+        margin-top: 5vh;
     }
 }
