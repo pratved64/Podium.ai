@@ -81,8 +81,6 @@ body {
 }
 
 #controls-bar > button:hover {
-    background: var(--transparent);
-    border: 1px solid white;
     transform: scale(1.03);
     box-shadow: 0 0 15px #ff1301cc;
     cursor: pointer;

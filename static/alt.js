@@ -1,4 +1,5 @@
 const imgLink = 'https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/';
+const raceLink = 'https://www.formula1.com/en/racing/2025/'
 const circuitToCountry = {
     // Primary circuit names from the JSON
     "Melbourne": "Australia",
@@ -57,6 +58,8 @@ const getData = () => {
 
             let imageElement = document.createElement('img');
             console.log(imagePath)
+
+            imageContainer.href = raceLink + circuitToCountry[data[0].Circuit].replace("_", "-").toLowerCase();
             imageElement.src = imagePath;
             imageElement.alt = "Circuit";
             imageContainer.appendChild(imageElement);

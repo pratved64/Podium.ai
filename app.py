@@ -90,3 +90,4 @@ def home():
 def alt():
     return render_template("alt-dashboard.html")
 
+app.run(debug=True)
