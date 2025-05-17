@@ -17,7 +17,7 @@ def fetchQualifyingData():
     today = datetime.today().date()
     lastDate = datetime.strptime(lastUpdated, "%Y-%m-%d").date()
     if today != lastDate:
-        for i in range(len(f1_calendar)):
+        for i in range(len(f1_calendar)-1):
             gpDate = datetime.strptime(f1_calendar[i]["date"], "%Y-%m-%d").date()
             nextGPDate = datetime.strptime(f1_calendar[i + 1]["date"], "%Y-%m-%d").date()
             if gpDate < today < nextGPDate:
@@ -90,3 +90,4 @@ def home():
 def alt():
     return render_template("alt-dashboard.html")
 
+app.run(debug=True)
