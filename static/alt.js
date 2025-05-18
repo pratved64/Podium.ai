@@ -8,7 +8,7 @@ const circuitToCountry = {
     "Sakhir": "Bahrain",
     "Jeddah": "Saudi_Arabia",
     "Miami": "Miami",
-    "Imola": "Italy",
+    "Imola": "Emilia_Romagna",
     "Monte Carlo": "Monaco",
     "Barcelona": "Spain",
     "Montreal": "Canada",
@@ -53,17 +53,23 @@ const getData = () => {
                 row.style.animationDelay = `${(index - 1) * 0.08}s`
             });
 
-            circuitName.innerHTML = circuitToCountry[data[0].Circuit].replace("_", " ");
+            circuitName.innerHTML = data[0].Circuit
             let imagePath = imgLink + circuitToCountry[data[0].Circuit] + "_Circuit";
 
             let imageElement = document.createElement('img');
             console.log(imagePath)
 
-            imageContainer.href = raceLink + circuitToCountry[data[0].Circuit].replace("_", "-").toLowerCase();
+            imageContainer.href = raceLink + fixLink(circuitToCountry[data[0].Circuit]).replace("_", "-").toLowerCase();
             imageElement.src = imagePath;
             imageElement.alt = "Circuit";
             imageContainer.appendChild(imageElement);
         });
+}
+
+
+function fixLink(circuit) {
+    if (circuit === "Emilia_Romagna") return "EmiliaRomagna"
+    else return circuit
 }
 
 // DYNAMICALLY FETCH CIRCUITS!!
