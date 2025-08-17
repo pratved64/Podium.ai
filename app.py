@@ -12,7 +12,6 @@ app = Flask(__name__)
 
 hostName = os.getenv("DOMAIN_NAME")
 
-
 def fetchQualifyingData():
     today = datetime.today().date()
     lastDate = datetime.strptime(lastUpdated, "%Y-%m-%d").date()
