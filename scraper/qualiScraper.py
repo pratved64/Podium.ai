@@ -6,11 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-<<<<<<< HEAD
 weatherKey = os.getenv("WEATHER_API_KEY")
-=======
-weatherKey = '035574fafb83470ebb1150004252003' #os.getenv("WEATHER_API_KEY")
->>>>>>> master
+
 base_dir = os.path.dirname(os.path.abspath(__file__))
 circuitsPath = os.path.join(base_dir, "circuits2025.json")
 metadataPath = os.path.join(base_dir, "metadata.json")
@@ -76,22 +73,6 @@ def loadCircuits(path=circuitsPath) -> dict:
 
 
 def scrapeResults(season, slug, weather, raceID=1255):
-<<<<<<< HEAD
-    # raceID = 1255
-    url = f'https://www.formula1.com/en/results/{season}/races/{raceID}/{slug}/qualifying'
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception(f'Failed to load qualifying page: Status {response.status_code}')
-
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Extract stuff
-    circuitp = soup.select_one('p.text-greyDark')
-    area = circuitp.text.strip() if circuitp else "Unknown Circuit"
-    circuit = area.split()[-1]
-
-    table = soup.select_one('table.f1-table.f1-table-with-data')
-=======
     url = f'https://www.formula1.com/en/results/{season}/races/{raceID}/{slug}/qualifying'
     resp = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
     if resp.status_code != 200:
@@ -100,13 +81,12 @@ def scrapeResults(season, slug, weather, raceID=1255):
     soup = BeautifulSoup(resp.text, 'html.parser')
 
     # ---- Circuit / round location (avoid brittle CSS-module class) ----
-    # Structure in your HTML: <button id="content-dropdown"><span><span>Hungary</span>...</span></button>
     circuit_el = soup.select_one('button#content-dropdown span span')
     circuit = circuit_el.get_text(strip=True) if circuit_el else (slug.replace('-', ' ').title() if slug else "Unknown Circuit")
 
     # ---- Results table ----
     table = soup.select_one('table.f1-table')
->>>>>>> master
+
     if not table:
         raise Exception("Results table not found!")
 
@@ -121,21 +101,6 @@ def scrapeResults(season, slug, weather, raceID=1255):
         if len(cells) < 7:
             continue
 
-<<<<<<< HEAD
-        driverCell = cells[2]
-        driverSpan = driverCell.find('span', class_="tablet:hidden")
-        driverCode = driverSpan.text.strip() if driverSpan and driverSpan.text.strip() else "N/A"
-
-        team = cells[3].text.strip() or "N/A"
-
-        q1Time = cells[4].text.strip() or "N/A"
-        q2Time = cells[5].text.strip() or "N/A"
-        q3Time = cells[6].text.strip() or "N/A"
-
-        qualifyingResults.append({
-            "Season": season,
-            "Round": (raceID - 1253),
-=======
         # Driver 3-letter code inside <span class="md:hidden">CODE</span>
         driverCell = cells[2]
         code_span = driverCell.select_one('span.md\\:hidden')
@@ -156,28 +121,17 @@ def scrapeResults(season, slug, weather, raceID=1255):
 
         qualifyingResults.append({
             "Season": season,
-            "Round": (raceID - 1253),  # your original logic; consider scraping round separately later
->>>>>>> master
+            "Round": (raceID - 1253), 
             "Circuit": circuit,
             "Weather": weather[0],
             "Rainfall": weather[1],
             "Driver": driverCode,
-<<<<<<< HEAD
-            "Team": teamMap[team],
-            "GridPosition": pos,
-            "Q1": q1Time,
-            "Q2": q2Time,
-            "Q3": q3Time
-        })
-
-=======
             "Team": teamMap.get(team, team),
             "GridPosition": pos,
             "Q1": q1,
             "Q2": q2,
             "Q3": q3
         })
->>>>>>> master
         pos += 1
 
     return qualifyingResults
