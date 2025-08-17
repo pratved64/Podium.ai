@@ -15,11 +15,7 @@ const circuitToCountry = {
     "Spielberg": "Austria",
     "Silverstone": "United_Kingdom",
     "Spa-Francorchamps": "Belgium",
-<<<<<<< HEAD
-    "Budapest": "Hungary",
-=======
     "Hungary": "Hungary",
->>>>>>> master
     "Zandvoort": "Netherlands",
     "Monza": "Italy",
     "Baku": "Azerbaijan",
@@ -63,11 +59,7 @@ const getData = () => {
             let imageElement = document.createElement('img');
             console.log(imagePath)
 
-<<<<<<< HEAD
-            imageContainer.href = raceLink + fixLink(circuitToCountry[data[0].Circuit]).replace("_", "-").toLowerCase();
-=======
             imageContainer.href = raceLink + fixLink(circuitToCountry[data[0].Circuit]).toLowerCase();
->>>>>>> master
             imageElement.src = imagePath;
             imageElement.alt = "Circuit";
             imageContainer.appendChild(imageElement);
