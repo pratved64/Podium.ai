@@ -50,19 +50,11 @@ body {
 #right {
     width: 35%;
     flex: 1 1 35%;
-<<<<<<< HEAD
-    padding: 5px 20px;
-    margin-top: 3rem;
-    border: 1px solid #ffffff66;
-    border-radius: 12px;
-    height: 25.8rem;
-=======
     padding: 5px 20px 5px 20px;
     margin-top: 3rem;
     border: 1px solid #ffffff66;
     border-radius: 12px;
     height: 28rem;
->>>>>>> master
 }
 
 #controls-bar {
